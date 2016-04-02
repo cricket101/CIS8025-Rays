@@ -28,6 +28,7 @@ public class TipCalculatorActivity extends Activity {
 		onClickRadioButton();
 		onClickPlusButton();
 		onClickMinusButton();
+		onClickClearButton();
 	}
 
 	@Override
@@ -67,8 +68,13 @@ public class TipCalculatorActivity extends Activity {
 				if (!hasFocus) {
 					EditText editName2 = (EditText) findViewById(R.id.editText1);
 					EditText editName3 = (EditText) findViewById(R.id.editText4);
+					//EditText editName4 = (EditText) findViewById(R.id.editText2);
+					EditText editName5 = (EditText) findViewById(R.id.editText3);
+					//int tip_per = Integer.parseInt(editName4.getText().toString());
+					double tip_amount = Double.parseDouble(editName5.getText().toString());
 					double bill_amount = Double.parseDouble(editName2.getText().toString());
-					editName3.setText(String.valueOf(bill_amount));
+					//double tip_amount = (bill_amount * tip_per) / 100;
+					editName3.setText(String.valueOf(bill_amount + tip_amount));
 				      }
 			}
 			
@@ -186,4 +192,28 @@ public class TipCalculatorActivity extends Activity {
 			}
 		});
 	}
+	
+	public void onClickClearButton() {
+		Button clearButton = (Button) findViewById(R.id.button3);
+		clearButton.setOnClickListener(new OnClickListener() 
+		{
+			
+			public void onClick(View arg0) {
+				//RadioGroup radioGroup1 = (RadioGroup) findViewById(R.id.radioGroup1);
+				//radioGroup1.clearCheck();
+				EditText editName1 = (EditText) findViewById(R.id.editText1);
+				EditText editName2 = (EditText) findViewById(R.id.editText2);
+				EditText editName3 = (EditText) findViewById(R.id.editText3);
+				EditText editName4 = (EditText) findViewById(R.id.editText4);
+				//RadioGroup radioGroup1 = (RadioGroup) findViewById(R.id.radioGroup1);
+				
+				editName1.setText(String.valueOf(0));
+				editName2.setText(String.valueOf(0));
+				editName3.setText(String.valueOf(0));
+				editName4.setText(String.valueOf(0));
+				//radioGroup1.clearCheck();
+			}
+		});
+	}
+
 }
